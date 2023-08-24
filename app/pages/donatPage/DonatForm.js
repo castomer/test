@@ -44,8 +44,7 @@ exports.DonatForm = class DonatForm extends BasePage {
 
   // Проверка наличия текста в форме 
   async openForm() {
-    const selector = "button[data-qa='donate-button']";
-
+    await this.frameClickCatch(this.frameName, this.textLoc("Donate now")) // Клик по полю donat
   } 
 
   async changeUsd() {

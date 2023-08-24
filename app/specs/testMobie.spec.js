@@ -6,6 +6,7 @@ const { allure } = require('allure-playwright');
 const { CreditCardForm } = require('../pages/donatPage/СreditCardForm');
 const { PersInform } = require('../pages/donatPage/PersInForm');
 const { PaymentForm } = require('../pages/donatPage/PaymentForm');
+import { targetUrl } from '../common/baseConfig';
 
 let page;
 
@@ -38,7 +39,7 @@ test.describe.serial('Mobile Tests', () => {
       const { homePage } = createPageObjects(page);
       
       await test.step("Переход по ссылке ", async()=>{
-        await page.goto('https://data.fundraiseup.com/qa-test-7R58U3/');
+        await page.goto(targetUrl);
         await homePage.goToFrom();
       })
 

@@ -56,6 +56,7 @@ exports.BasePage = class BasePage {
     await frame.waitForLoadState('load'); 
     await frame.waitForLoadState('domcontentloaded');    
     await frame.waitForSelector(`//*[normalize-space(text())='${nameText}']`), { timeout: 15000 }; // ожидаем элемент в фрейме 
+
   }
 
   
@@ -68,6 +69,25 @@ exports.BasePage = class BasePage {
    // await frame.locator(this.textLoc(`${nameElement}`)).click();  // ожидаем элемент в фрейме 
     await frame.locator(nameElement).click();  // ожидаем элемент в фрейме 
   }
+
+  async frameClickCatch(nameFrame, nameElement) {
+    console.log(`Был выбран фрейм '${nameFrame}' клик по наименованию '${nameElement}'`);
+    const frame = this.page.frame({ name: nameFrame });
+  
+    await frame.waitForLoadState();  // ожидаем загрузки фрейма
+  
+    const elementExists = await frame.waitForSelector(nameElement, { state: 'visible', timeout: 5000 })
+      .then(() => true)
+      .catch(() => false);
+  
+    if (elementExists) {
+      console.log(`Элемент '${nameElement}' найден во фрейме. Выполняем клик.`);
+      await frame.locator(nameElement).click();
+    } else {
+      console.log(`Элемент '${nameElement}' не найден во фрейме.`);
+    }
+  }
+
 
   // Эдемент ожидания
   async pageLoad() {

@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 let host = require("os")
-const targetUrl = 'https://data.fundraiseup.com/qa-test-7R58U3/';
+export const targetUrl = 'https://data.fundraiseup.com/qa-test-7R58U3/';
 
 
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
       name: 'Microsoft Edge',
       use: { ...devices['Desktop Edge'], channel: 'msedge' }, // or "msedge-beta" or 'msedge-dev'
     },
-
+    targetUrl
   ],
 
 
