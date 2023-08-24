@@ -30,8 +30,8 @@ exports.DonatForm = class DonatForm extends BasePage {
   // Проверка наличия текста в форме
   async textCheck() {
     await this.waitElementText(this.frameName, texts.text1); // Провеока присутствия текста к форме А
-    await this.waitElementText(this.frameName, texts.text2); // 2 Tекст к форме А
-    await this.waitElementText(this.frameName, texts.text3); // 3 Tекст к форме А
+    await this.waitElementText(this.frameName, texts.text2); // Провеока присутствия текста к форме B
+    await this.waitElementText(this.frameName, texts.text3); // Провеока присутствия текста к форме C
   }
 
   // Проверка гиперссылок
@@ -67,8 +67,9 @@ exports.DonatForm = class DonatForm extends BasePage {
   }
 
   async changeUsd() {
-    await this.waitElementText(this.frameName, texts.minCost); // проверка сообщения о минимальном курсе
-    await this.selectOptionInFrame(
+   // await this.waitElementText(this.frameName, texts.minCost); // проверка сообщения о минимальном курсе
+   await this.waitElementFrame(this.frameName, `//*[contains(text(), '${texts.minDonat}')]`); // проверка сообщения о минимальном курсе
+   await this.selectOptionInFrame(
       this.frameName,
       "select.currency-select-control",
     ); //  смена валюты

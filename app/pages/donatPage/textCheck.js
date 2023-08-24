@@ -6,7 +6,8 @@ module.exports = {
     minCost: `₽473`,
     persInform: `Please provide your details so we can contact you about your donation.`,
     creditformSsl: `256-bits encrypted`,
-    persInformError: `Try again or enter a different email address to continue.`
+    persInformError: `Try again or enter a different email address to continue.`,
+    minDonat: `The minimum donation amount is`,
 
 
 
