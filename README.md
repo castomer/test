@@ -7,10 +7,10 @@
 ## Запуск тестов локально
 Перед запуском тестов выполнить в корне репозитория **npm install**
 
-Запуск всех тестов: **node run-tests.js**
-запуск конкретного теста  **node run-tests.js --test app/specs/testDesktop.spec.js**
-запуск конкретного теста  **node run-tests.js --test app/specs/testMobie.spec.js**
+* Запуск всех тестов: **node run-tests.js**
+* запуск конкретного теста  **node run-tests.js --test app/specs/testDesktop.spec.js**
+* запуск конкретного теста  **node run-tests.js --test app/specs/testMobie.spec.js**
 
-После завершения тестов запустится отчет
+* После завершения тестов запустится отчет
 
-Отчет в папке **allure-report**
+* Отчет в папке **allure-report**
