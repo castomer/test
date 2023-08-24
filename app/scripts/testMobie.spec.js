@@ -58,6 +58,7 @@ test.describe.serial('Mobile Tests', () => {
       const { donatForm } = createPageObjects(page);
 
       await test.step("Выбирает “Monthly” пожертвование/ввод суммы", async()=>{
+        await donatForm.openForm();
         await donatForm.paymentInput();
       }) 
       
