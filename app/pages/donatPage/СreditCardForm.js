@@ -28,7 +28,7 @@ exports.CreditCardForm = class CreditCardForm extends BasePage {
   async textCheck() {
     await this.waitElementText(this.frameName, "Credit card"); // Проверка наличия текста
     await this.waitElementText(this.frameName, texts.creditformSsl); // ssl text
-    await this.waitElementText(this.frameName, "Safe & Secure"); // 3 Tекст к форме А
+    await this.waitElementText(this.frameName, "Safe & Secure"); // Проверка наличия текста в форме 
   }
 
   // Ошибочный ввод карты

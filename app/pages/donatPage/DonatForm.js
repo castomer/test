@@ -40,17 +40,17 @@ exports.DonatForm = class DonatForm extends BasePage {
       this.frameName,
       "Other Ways to Give",
       "https://demo.fundraiseup.com",
-    ); // Проверка линка формы A
+    ); // Проверка линка формы Other Ways to Give
     await this.linkGiper(
       this.frameName,
       "How We Use Your Gift",
       "https://demo.fundraiseup.com",
-    ); // Проверка линка формы A
+    ); // Проверка линка формы How We Use Your Gift
     await this.linkGiper(
       this.frameName,
       "Manage Your Donations",
       "https://donor.helping-hand.org/demo",
-    ); // Проверка линка формы A
+    ); // Проверка линка формы Manage Your Donations
   }
 
   // Проверка наличия текста в форме

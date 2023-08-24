@@ -64,7 +64,6 @@ exports.BasePage = class BasePage {
     const frame = this.page.frame({ name: `${nameFrame}` });
     await frame.waitForLoadState(); // ожидаем загрузки фрейма
     await frame.waitForSelector(nameElement), { timeout: 15000 }; // ожидаем элемент в фрейме
-    // await frame.locator(this.textLoc(`${nameElement}`)).click();  // ожидаем элемент в фрейме
     await frame.locator(nameElement).click(); // ожидаем элемент в фрейме
   }
 
