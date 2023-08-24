@@ -14,3 +14,4 @@
 * После завершения тестов запустится отчет
 
 * Отчет в папке **allure-report**
+* Генерация отчета **npx allure generate allure-results --clean**
