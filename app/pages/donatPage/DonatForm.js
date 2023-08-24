@@ -13,6 +13,8 @@ exports.DonatForm = class DonatForm extends BasePage {
 
   // Проверка наличия форм
   async formCheck() {
+    await this.waitLoadPage(this.frameName)
+
     await this.waitElementFrame(this.frameName,`//div[@class="campaign campaign-desktop"]`) // Блок А
     await this.waitElementFrame(this.frameName,`//div[@class="widget-main widget-main-desktop"]`) // Блок б
     await this.waitElementFrame(this.frameName,`//div[@class="campaign campaign-desktop"]`) // Блок С
@@ -38,6 +40,12 @@ exports.DonatForm = class DonatForm extends BasePage {
     await this.frameClick(this.frameName, this.textLoc("Monthly")) // Клик по полю Monthly
     await this.enterText(this.frameName, selector, "100"); // Вводим сумму
     await this.enterKey(this.frameName, selector, "Enter"); // жмем интер
+  } 
+
+  // Проверка наличия текста в форме 
+  async openForm() {
+    const selector = "button[data-qa='donate-button']";
+
   } 
 
   async changeUsd() {

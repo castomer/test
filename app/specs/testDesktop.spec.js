@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect, devices  } = require('@playwright/test');
 const { DonatForm } = require('../pages/donatPage/DonatForm');
 const { HomePage } = require('../pages/homePage/homePage');
 const { BasePage } = require('../pages/base/basePage');
@@ -20,7 +20,7 @@ function createPageObjects(page) {
   };
 }
 
-test.describe.serial('two tests', () => {
+test.describe.serial('Проверка страницы оплаты desktop версия', () => {
 
 
   test('Донор переходит на сайт и нажимает на кнопку “Give now', async () => {
@@ -66,7 +66,7 @@ test.describe.serial('two tests', () => {
 
 
   test('Проверка формы Payment Payment option/ ввод суммы пожертвования', async () => {
-    const { donatForm, PaymentForm } = createPageObjects(page);
+    const { PaymentForm } = createPageObjects(page);
 
     await test.step("Убираем чек-бокс покрытия комиссии “Cover transaction costs”", async()=>{
       await PaymentForm.paymentCheck();
@@ -75,8 +75,6 @@ test.describe.serial('two tests', () => {
     await test.step("Проверяем наличие кнопок на форме”", async()=>{
       await PaymentForm.paymentFillCheck();
     }) 
-
-
    });
 
 
@@ -102,7 +100,6 @@ test.describe.serial('two tests', () => {
    });
 
 
-   
   test('Проверка формы Personal information', async () => {
     const { PersInform} = createPageObjects(page);
 
@@ -117,8 +114,6 @@ test.describe.serial('two tests', () => {
     await test.step("Проверяем сообщения об ошибке ввода карты", async()=>{
       await PersInform.errorMassage(); // Проверяем сообщение об ошибке
     })
-
-
    });
 
   

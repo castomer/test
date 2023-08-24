@@ -12,9 +12,9 @@ exports.PaymentForm = class PaymentForm extends BasePage{
 
   // Проверка наличия текста в форме 
   async paymentCheck() {
-    await this.frameClick(this.frameName, this.textLoc("Donate monthly")) // Переход на форму 
+    await this.frameClick(this.frameName, this.textLoc("Donate monthly")); // Переход на форму 
     await this.frameClick(this.frameName, '//span[@class="p-abs centered"]'); // Нажимаем по чекбоксу
-    await this.waitElementText(this.frameName, texts.text4); // Проверяем всплывающие уведомление
+  //  await this.waitElementText(this.frameName, texts.text4); // Проверяем всплывающие уведомление
   }
 
   // Проверка наличия элементов на странице

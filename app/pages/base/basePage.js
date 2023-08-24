@@ -52,7 +52,9 @@ exports.BasePage = class BasePage {
   async waitElementText(nameFrame, nameText) {
     console.log(`Ожидание текста элемента''${nameFrame, nameText}'`)
     const frame = await this.page.frame({name:`${nameFrame}`});
-    await frame.waitForLoadState(); // ожидаем загрузки фрейма     
+    await frame.waitForLoadState(); // ожидаем загрузки фрейма
+    await frame.waitForLoadState('load'); 
+    await frame.waitForLoadState('domcontentloaded');    
     await frame.waitForSelector(`//*[normalize-space(text())='${nameText}']`), { timeout: 15000 }; // ожидаем элемент в фрейме 
   }
 
@@ -61,7 +63,8 @@ exports.BasePage = class BasePage {
   async frameClick(nameFrame, nameElement) {
     console.log(`Был выбран фрейм '${nameFrame}' клик по наименованию '${nameElement}'`);
     const frame = this.page.frame({name:`${nameFrame}`});
-    await frame.waitForLoadState();  // ожидаем загрузки фрейма       
+    await frame.waitForLoadState();  // ожидаем загрузки фрейма    
+    await frame.waitForSelector(nameElement), { timeout: 15000 }; // ожидаем элемент в фрейме    
    // await frame.locator(this.textLoc(`${nameElement}`)).click();  // ожидаем элемент в фрейме 
     await frame.locator(nameElement).click();  // ожидаем элемент в фрейме 
   }
@@ -116,6 +119,14 @@ exports.BasePage = class BasePage {
     }
   }
   
+  // Ожидание загруки страницы/фрейм
+  async waitLoadPage(nameFrame) {
+    console.log(`Ожидание загруки страницы/фрейма''${nameFrame}'`)
+    const frame = await this.page.frame({name:`${nameFrame}`});
+    await frame.waitForLoadState(); // ожидаем загрузки фрейма
+    await frame.waitForLoadState('load'); 
+    await frame.waitForLoadState('domcontentloaded');
+  }
 
 
  
