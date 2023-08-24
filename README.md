@@ -11,8 +11,6 @@
 запуск конкретного теста  **node run-tests.js --test app/specs/testDesktop.spec.js**
 запуск конкретного теста  **node run-tests.js --test app/specs/testMobie.spec.js**
 
-
 После завершения тестов запустится отчет
-Запускаются паралельно два теста 
 
 Отчет в папке **allure-report**
