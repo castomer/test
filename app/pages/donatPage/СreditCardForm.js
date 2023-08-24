@@ -36,6 +36,12 @@ exports.CreditCardForm = class CreditCardForm extends BasePage{
     await this.waitElementText(this.frameName, "Credit card") // Проверка смены формы
   }
 
+   // Перекход к форме
+  async openFormCredit() {
+    await this.frameClick(this.frameName, "//span[text()='Credit card']"); // Переход на следующую форму
+
+  }
+
 
 
 

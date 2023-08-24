@@ -34,7 +34,7 @@ test.describe.serial('two tests', () => {
   });
 
 
-  test('Выбирает “Monthly” пожертвование', async () => {
+  test('Проверка основных форм пожертвования ', async () => {
     const { donatForm } = createPageObjects(page);
 
     await test.step("Проверяем наличие форм", async()=>{
@@ -51,32 +51,74 @@ test.describe.serial('two tests', () => {
   });
 
 
-  test('Вводит сумму 100 USD', async () => {
-    const { donatForm, CreditCardForm, PaymentForm } = createPageObjects(page);
+  test('Проверка формы Secure donation/ ввод суммы пожертвования', async () => {
+    const { donatForm, PaymentForm } = createPageObjects(page);
 
-    await test.step("Смена валюты", async()=>{
-
+    await test.step("Выбирает “Monthly” пожертвование/ввод суммы", async()=>{
       await donatForm.paymentInput();
-      await PaymentForm.paymentCheck();
-      await PaymentForm.paymentFillCheck();
     }) 
-      
-    await test.step("Выбор месячной подпииски/ прожатие чекбокса", async()=>{
-      //await donatForm.paymentCheck();
-    })    
-    await test.step("В1", async()=>{
-      await CreditCardForm.errorCheck(); 
-      await CreditCardForm.payment(); 
-      await CreditCardForm.textCheck(); 
-    })    
-  
+    
+    await test.step("Cмена курса", async()=>{
+      await donatForm.changeUsd();
+    }) 
+
    });
 
+
+  test('Проверка формы Payment Payment option/ ввод суммы пожертвования', async () => {
+    const { donatForm, PaymentForm } = createPageObjects(page);
+
+    await test.step("Убираем чек-бокс покрытия комиссии “Cover transaction costs”", async()=>{
+      await PaymentForm.paymentCheck();
+    }) 
+
+    await test.step("Проверяем наличие кнопок на форме”", async()=>{
+      await PaymentForm.paymentFillCheck();
+    }) 
+
+
+   });
+
+
+  test('Проверка формы Credit card', async () => {
+    const { CreditCardForm} = createPageObjects(page);
+
+    await test.step("Выбирает оплату кредитной картой “Credit card", async()=>{
+        await CreditCardForm.openFormCredit(); 
+    })
+
+    await test.step("Проверка на сл. этап платежа без ввода карты", async()=>{
+        await CreditCardForm.errorCheck(); 
+    })
+
+    await test.step("Ввод карточных данных для оплаты", async()=>{
+        await CreditCardForm.payment(); 
+    })
+
+    await test.step("Проверка наличия текстовых данных на форме", async()=>{
+        await CreditCardForm.textCheck(); 
+    })
+
+   });
+
+
+   
   test('Проверка формы Personal information', async () => {
     const { PersInform} = createPageObjects(page);
-    await PersInform.textCheck(); // Проверяем текст в доступных полях
-    await PersInform.inputName(); // Ввод основных значений в поля 
-    await PersInform.errorMassage(); // Проверяем сообщение об ошибке
+
+    await test.step("Проверка наличия текстовых данных на форме", async()=>{
+      await PersInform.textCheck(); 
+    })
+
+    await test.step("Вводим данные First name/Last name/E-mail/Donate", async()=>{
+      await PersInform.inputName(); // Ввод основных значений в поля 
+    })
+
+    await test.step("Проверяем сообщения об ошибке ввода карты", async()=>{
+      await PersInform.errorMassage(); // Проверяем сообщение об ошибке
+    })
+
+
    });
 
   

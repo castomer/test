@@ -35,8 +35,12 @@ exports.DonatForm = class DonatForm extends BasePage {
   // Проверка наличия текста в форме 
   async paymentInput() {
     const selector = "//input[@data-qa='amount']";
+    await this.frameClick(this.frameName, this.textLoc("Monthly")) // Клик по полю Monthly
     await this.enterText(this.frameName, selector, "100"); // Вводим сумму
     await this.enterKey(this.frameName, selector, "Enter"); // жмем интер
+  } 
+
+  async changeUsd() {
     await this.waitElementText(this.frameName, texts.minCost); // проверка сообщения о минимальном курсе
     await this.selectOptionInFrame(this.frameName,'select.currency-select-control');  //  смена валюты
   } 
