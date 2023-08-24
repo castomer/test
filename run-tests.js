@@ -1,9 +1,18 @@
 const { exec } = require('child_process');
+const minimist = require('minimist');
+
+const args = minimist(process.argv.slice(2)); // Получаем аргументы командной строки
 
 (async () => {
   // Запуск тестов
   try {
-    await execAsync('npx playwright test --headed');
+    let testCommand = 'npx playwright test --headed';
+
+    if (args.test) {
+      testCommand += ` ${args.test}`;
+    }
+
+    await execAsync(testCommand);
   } catch (error) {
     console.error(`Ошибка при запуске тестов: ${error.message}`);
   }
