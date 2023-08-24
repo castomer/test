@@ -12,8 +12,8 @@ exports.PersInform = class PersInform extends BasePage {
   // Проверка формы Personal information
   async textCheck() {
     await this.frameClick(this.frameName, '[data-qa="card-continue"]'); // Переходим к форме Personal information
-    await this.waitElementText(this.frameName, texts.persInform); // Провеока присутствия текста к форме А
-    await this.waitElementText(this.frameName, "Personal information"); // Провеока присутствия текста к форме А
+    await this.waitElementText(this.frameName, texts.persInform); // Провеока присутствия текста в форме 
+    await this.waitElementText(this.frameName, "Personal information"); // Провеока присутствия текста в форме 
   }
 
   // ввод атрибутов
@@ -37,6 +37,6 @@ exports.PersInform = class PersInform extends BasePage {
       "E-mail@E-mail.com",
     ); //Вводим кривой Email
     await this.frameClick(this.frameName, "button[data-qa='privacy-continue']"); // Нажимаем на кеопку Donate
-    await this.waitElementText(this.frameName, texts.persInformError); // Провеока присутствия текста к форме А
+    await this.waitElementText(this.frameName, texts.persInformError); // Проверка присутствия текста об ошибке
   }
 };
